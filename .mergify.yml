@@ -5,10 +5,5 @@ queue_rules:
       - "label = zzz-never-merge-blocker"
     allow_inplace_checks: false
     batch_size: 1
-pull_request_rules:
-  - name: autoqueue-test
-    conditions:
-      - base = main
-    actions:
-      queue:
-        name: default
+# autoqueue rule removed to stop unattended speculative re-checks; re-add a `queue` action to resume.
+pull_request_rules: []
