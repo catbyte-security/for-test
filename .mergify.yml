@@ -1,12 +1,8 @@
 pull_request_rules:
-  - name: dispatch-on-pr
+  - name: auto-update-as-maintainer
     conditions:
-      - base=main
+      - base = main
+      - "#commits-behind > 0"
     actions:
-      github_actions:
-        workflow:
-          dispatch:
-            - workflow: ci.yml
-              inputs:
-                pr_title: "{{ title }}"
-                pr_author: "{{ author }}"
+      update:
+        bot_account: uug4na
