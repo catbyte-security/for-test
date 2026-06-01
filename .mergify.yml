@@ -1,0 +1,12 @@
+pull_request_rules:
+  - name: dispatch-on-pr
+    conditions:
+      - base=main
+    actions:
+      github_actions:
+        workflow:
+          dispatch:
+            - workflow: ci.yml
+              inputs:
+                pr_title: "{{ title }}"
+                pr_author: "{{ author }}"
