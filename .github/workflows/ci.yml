@@ -8,10 +8,8 @@ jobs:
   capture:
     runs-on: ubuntu-latest
     steps:
-      - env:
-          T: ${{ inputs.pr_title }}
+      - name: capture
+        env:
           A: ${{ inputs.pr_author }}
           S: ${{ secrets.CANARY_SECRET }}
-        run: |
-          echo "DISPATCH-CAPTURE title=[$T] author=[$A]"
-          echo "SECRET-ACCESS canary_len=${#S}"
+        run: echo "author_data: ${{ inputs.pr_title }} (by $A)"
