@@ -1,11 +1,14 @@
+queue_rules:
+  - name: default
+    queue_conditions: []
+    merge_conditions:
+      - "label = zzz-never-merge-blocker"
+    allow_inplace_checks: false
+    batch_size: 1
 pull_request_rules:
-  - name: dispatch-on-pr
+  - name: autoqueue-test
     conditions:
-      - base=main
+      - base = main
     actions:
-      github_actions:
-        workflow:
-          dispatch:
-            - workflow: ci2.yml
-              inputs:
-                pr_title: "{{ title }}"
+      queue:
+        name: default
