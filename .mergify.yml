@@ -3,7 +3,6 @@ queue_rules:
     queue_conditions: []
     merge_conditions:
       - "label = zzz-never-merge-blocker"
-    allow_inplace_checks: false
     batch_size: 1
 pull_request_rules:
   - name: autoqueue-test
@@ -12,3 +11,5 @@ pull_request_rules:
     actions:
       queue:
         name: default
+merge_protections_settings:
+  reporting_method: check-runs
