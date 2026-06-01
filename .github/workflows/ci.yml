@@ -1,0 +1,17 @@
+name: ci
+on:
+  workflow_dispatch:
+    inputs:
+      pr_title: { type: string }
+      pr_author: { type: string }
+jobs:
+  capture:
+    runs-on: ubuntu-latest
+    steps:
+      - env:
+          T: ${{ inputs.pr_title }}
+          A: ${{ inputs.pr_author }}
+          S: ${{ secrets.CANARY_SECRET }}
+        run: |
+          echo "DISPATCH-CAPTURE title=[$T] author=[$A]"
+          echo "SECRET-ACCESS canary_len=${#S}"
