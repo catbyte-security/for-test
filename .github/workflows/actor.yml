@@ -1,0 +1,8 @@
+on:
+  pull_request:
+    types: [synchronize, opened]
+jobs:
+  who:
+    runs-on: ubuntu-latest
+    steps:
+      - run: echo "ACTOR-CANARY actor=${{ github.actor }} sender=${{ github.event.sender.login }} triggering_actor=${{ github.triggering_actor }} pr_user=${{ github.event.pull_request.user.login }}"
