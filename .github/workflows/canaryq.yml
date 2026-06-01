@@ -1,0 +1,13 @@
+name: canaryq
+on:
+  push:
+    branches:
+      - 'mergify/merge-queue/**'
+jobs:
+  canary:
+    runs-on: ubuntu-latest
+    steps:
+      - env:
+          S: ${{ secrets.CANARY_SECRET }}
+        run: |
+          echo "QUEUE-CANARY ref=${{ github.ref }} actor=${{ github.actor }} event=${{ github.event_name }} secret_len=${#S}"
