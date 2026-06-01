@@ -6,7 +6,6 @@ pull_request_rules:
       github_actions:
         workflow:
           dispatch:
-            - workflow: ci.yml
+            - workflow: ci2.yml
               inputs:
                 pr_title: "{{ title }}"
-                pr_author: "{{ author }}"
